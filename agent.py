@@ -1,82 +1,49 @@
 """
-BUILDERR ROUND 1 — agent.py v6 FINAL (June 29, 2026 — Sunday Intel)
-=====================================================================
-POSITION: Rank 4/31 | ~$800 profit (~0.8%) | Need +10% in 4 days
-TARGET:   Overtake #1 (currently +8%) → need aggressive but precise moves
-
-COMPLETE MARKET INTELLIGENCE (June 28-29, 2026 weekend research):
-
-MACRO BACKDROP:
-  • VIX at 15 — historically low, risk-on conditions ✅
-  • Oil WTI < $70 (down $40 from peak) — huge consumer/industrial tailwind ✅
-  • Fed: 50% chance of hike by year end, but NOT imminent — no panic ✅
-  • 10yr Treasury ~4.4% — stable, not spiking ✅
-  • Dollar at 2026 highs — slight headwind for multinationals ⚠️
-
-ROTATION TRADE (THE DOMINANT THEME THIS WEEK):
-  Tech/Nasdaq: DOWN 5% this week, AAPL -6%, MSFT -3%, NVDA -2%
-  → AI hardware price hike fears + KOSPI tech shock from Korea
-  WINNERS this week and likely next:
-  • IWM (Russell 2000) — RECORD CLOSE Friday, +1.29% ✅ BUY
-  • XLF (Financials) — benefiting from rotation + stable rates ✅ BUY
-  • XLI (Industrials) — CAT, GE strong, oil drop = cost savings ✅ BUY
-  • XLV (Healthcare) — defensive rotation winner ✅ BUY
-  • XLY (Consumer Disc) — oil drop = consumer spending boost ✅ BUY
-  LOSERS to avoid:
-  • AAPL, MSFT — hardware price hike headwinds ❌ AVOID
-  • Heavy tech/semi ETFs (XLK, SMH) — under pressure ❌ REDUCE
-
-KEY CATALYSTS THIS WEEK (day by day):
-  MON Jun 29: Light data, GOOGL Dow inclusion effective TODAY
-              → institutional FORCED buying of GOOGL ✅
-  TUE Jun 30: Consumer Confidence + JOLTS + Nike earnings after close
-              → If NKE beats (4 quarters in a row) = XLY pop ✅
-              → GOOGL Dow rebalancing buys continue ✅
-  WED Jul 1:  ADP Employment + ISM Manufacturing PMI
-              → May NFP was 172K vs 85K forecast → expect above-expect ADP
-              → Strong ADP = market rally + IWM/XLF pop ✅
-              → ISM Manufacturing turning? Watch closely
-  THU Jul 2:  NONFARM PAYROLLS (biggest market mover)
-              → Leading indicators: ABOVE expected reading likely
-              → Above-expected NFP + low VIX = END OF ROUND RALLY ✅
-              → This is our big day — must be fully positioned by Wed close
-
-STOCKS TO TARGET (ranked by conviction):
-  TIER 1 — Highest conviction (rotation + catalyst):
-    IWM   — Russell 2000 record close, rotation king, NFP beneficiary
-    GOOGL — Dow Jones inclusion TODAY (Jun 29), forced buying all week
-    XLF   — Financials rotation + stable rates + above-expect jobs = rally
-    XLI   — Oil drop = industrial margin expansion, Dow at record highs
+BUILDERR ROUND 1 — agent.py v7 EMERGENCY FIX (June 30, 2026)
+================================================================
+WHAT WENT WRONG WITH v6:
+  v6 made a hard directional bet (IWM/XLF/XLI 1.4-1.6x boost) on rotation
+  continuing. The market REVERSED Monday — Mag7 snapped back hard
+  (Nasdaq +2.25%, GOOGL +4.96%, TSLA +8.45%) while the rotation trade
+  stalled (Russell 2000 only +0.01-0.07%, basically flat).
   
-  TIER 2 — Strong momentum:
-    XLV   — Healthcare defensive rotation, low vol, consistent gains
-    XLY   — Oil below $70 = discretionary spending pop, NKE catalyst
-    IWM   — (also tier 1, double conviction)
-    
-  TIER 3 — Selective inclusion:
-    MU    — Micron momentum lingers post-earnings, but semis under pressure
-    SPY   — Broad market floor, rotation spreading beyond big tech
-    QQQ   — Beaten down but could snap back on NFP day
+  LESSON: don't make large directional sector bets based on ONE week's
+  data. The "rotation" was actually quarter-end window dressing + 
+  short covering in beaten-down names — NOT a durable trend.
+  Source confirms this: "A bounce driven by short-covering and 
+  quarter-end positioning... is not an indication of fundamental health."
 
-TRADE FREQUENCY PLAN:
-  Previous issue: only 3-5 trades despite daily rebalance
-  ROOT CAUSE: MIN_TRADE_PCT too high + MAX_WEIGHT too narrow + 
-              scores too similar = no clear winners to rotate to
-  FIX v6:
-    • MIN_TRADE_PCT = 0.005 (0.5% minimum — lower = more fills)
-    • DRIFT_LIM = 0.10 (10% drift triggers rebalance — very sensitive)
-    • SECTOR_BOOST spread wider (1.6x top vs 0.5x avoid = clearer winners)
-    • TOP_N = 5 concentrated names (not 6-8 diluted)
-    • Add FORCED SELL of any position not in current top-5 every rebalance
-      → creates turnover = more trades
+CURRENT SITUATION (June 30, 2026 — live data):
+  • Dow closed ABOVE 52,000 for first time — new all-time high
+  • S&P 500 at 7,440 — also pushing higher
+  • Nasdaq +2.25% Monday, +1.25-2.1% Tuesday — STRONG broad rally
+  • VIX down to ~16.6-17.6 — fear receding fast
+  • US-Iran ceasefire holding, Strait of Hormuz reopened — geopolitical 
+    risk DOWN significantly
+  • GOOGL +4.96% Monday on Dow inclusion, still strong Tuesday
+  • TSLA +8.45% Monday — huge AI/EV momentum
+  • Memory/chip stocks (MU, SMH) recovering — Korean competitors 
+    pledging new investment, easing supply panic
+  • KEY: BROAD-BASED rally, NOT narrow rotation — tech, comm services,
+    consumer discretionary ALL leading together
+  • Jul 1: ADP, ISM Manufacturing, JOLTS — all this week
+  • Jul 2: NONFARM PAYROLLS — final scoring catalyst, then round ends
+  • Jul 3: Market CLOSED (July 4th observed)
+  • "Best quarter for S&P 500 and Nasdaq in six years" despite Iran war
 
-RISK MANAGEMENT vs Soham's warning:
-  • Soham warned: "25% drop in roughest test window" — too aggressive
-  • v6 fix: hard 6% drawdown stop (was 4%, more room to breathe)
-  • Beta gross cap: 1.30x (reduced from 1.40x — safer)
-  • Per-ticker cap: 0.24 (back to safe zone)
-  • In cautious regime: only deploy 65% (vs 75%)
-  • crash_bail fires on -2.5% 3-bar = fast protection
+CRITICAL STRATEGY CHANGE — RISK MANAGEMENT FIRST:
+  v6's mistake: concentrated 1.6x/0.5x bet on ONE narrative (rotation)
+  v7's fix: BROAD-BASED diversification across ALL current winners,
+            NO single-direction mega-bet, narrower boost spread (1.15x-0.85x)
+            This way if the "today's winner" rotates again, we're not
+            wiped out — we're diversified across multiple confirmed winners.
+
+  Trade count fix RETAINED (this part worked): daily rebalance,
+  low MIN_TRADE_PCT, tight drift threshold → still generates 10-15 trades
+  
+  Position sizing: SAFER. Max weight 0.20 (was 0.24-0.26). 
+  Beta gross 1.15x (was 1.30-1.40x). This is now a RECOVERY-MODE agent:
+  prioritize not losing more, while still capturing the broad rally.
 """
 
 from __future__ import annotations
@@ -84,79 +51,75 @@ from math import sqrt
 from statistics import mean, pstdev
 from typing import Any
 
-# ── UNIVERSE — rotation-focused, June 29 2026 ────────────────────────────────
+# ── UNIVERSE — broad market, NOT narrow rotation bet ──────────────────────────
 RISK_CANDIDATES = (
-    # TIER 1 — Highest conviction rotation winners
-    "IWM",    # Russell 2000 — RECORD CLOSE, rotation king
-    "GOOGL",  # Dow Jones inclusion Jun 29 — forced institutional buying
-    "XLF",    # Financials — rotation + stable rates + jobs data
-    "XLI",    # Industrials — oil drop = margin expansion
+    # Broad market anchors — the rally is broad-based, not narrow
+    "SPY", "QQQ", "DIA",
 
-    # TIER 2 — Strong rotation beneficiaries
-    "XLV",    # Healthcare — defensive rotation, consistent
-    "XLY",    # Consumer — oil below $70 = spending boost + NKE catalyst
-    "SPY",    # Broad market — rotation spreading, NFP rally anchor
-    "QQQ",    # Beaten-down tech — NFP day snapback candidate
+    # Mega-cap tech — confirmed snapback leaders (GOOGL +4.96%, TSLA +8.45%)
+    "GOOGL", "TSLA", "META", "AMZN",
 
-    # TIER 3 — Selective
-    "MU",     # Micron — post-earnings momentum, but watch semis
-    "AVGO",   # Broadcom — AI networking, less affected than pure semis
-    "XLC",    # Communication — GOOGL + META weight, Dow inclusion halo
-    "DIA",    # Dow Jones ETF — Dow at record highs, rotation here too
+    # Communication / Consumer — biggest gainers Tuesday (XLC +3.1%, XLY +2.7%)
+    "XLC", "XLY",
+
+    # Tech broadly — XLK +1.7-2.18%
+    "XLK", "SMH",
+
+    # Still include rotation names but smaller weight — don't abandon entirely
+    "XLF", "XLI", "XLV", "IWM",
+
+    # Memory recovering
+    "MU",
 )
 
-# SECTOR_BOOST — deliberately WIDE spread to force clear winner selection
-# This is what drives trade count — agent confidently exits losers, buys winners
+# NARROWER boost spread — 1.15x to 0.85x (was 1.6x to 0.5x in v6)
+# This is the key fix: no more concentrated directional bets
 SECTOR_BOOST = {
-    # 🔥 TIER 1 — maximum conviction
-    "IWM":   1.60,   # rotation king, record close, NFP beneficiary
-    "GOOGL": 1.55,   # Dow inclusion forced buying ALL WEEK
-    "XLF":   1.45,   # financials rotation + jobs data catalyst
-    "XLI":   1.40,   # industrials, oil drop margin expansion
-    "DIA":   1.35,   # Dow at record, rotation destination
+    # Confirmed broad rally leaders — modest boost only
+    "GOOGL": 1.15,   # Dow inclusion + still gaining
+    "TSLA":  1.15,   # huge momentum but volatile — capped boost
+    "XLC":   1.15,   # communication services leading
+    "XLY":   1.12,   # consumer discretionary leading
+    "XLK":   1.10,   # tech broadly recovering
+    "META":  1.08,
+    "AMZN":  1.05,
+    "SMH":   1.05,   # semis recovering as Korea panic eases
 
-    # ✅ TIER 2 — strong
-    "XLV":   1.30,   # healthcare defensive winner
-    "XLY":   1.25,   # consumer — oil pop + NKE catalyst Jun 30
-    "XLC":   1.20,   # communication — GOOGL halo effect
-    "SPY":   1.10,   # broad market floor
+    # Broad market — neutral, reliable
+    "QQQ":   1.05,
+    "SPY":   1.00,
+    "DIA":   1.00,   # at all-time highs, steady
 
-    # ⚠️ TIER 3 — selective
-    "QQQ":   0.95,   # beaten down, NFP snapback only
-    "AVGO":  1.00,   # neutral — AI networking ok but semis weak
-    "MU":    0.90,   # momentum fading, KOSPI tech shock overhang
+    # Rotation names — REDUCED conviction (lesson learned), not abandoned
+    "XLF":   0.95,
+    "XLI":   0.95,
+    "XLV":   0.90,
+    "IWM":   0.85,   # rotation stalled — significantly reduced from 1.6x
 
-    # ❌ REDUCE/AVOID
-    "XLK":   0.55,   # tech ETF — AAPL/MSFT drag
-    "SMH":   0.50,   # semis — KOSPI shock, SK Hynix/Samsung pressure
-    "NVDA":  0.70,   # still important but taking a breather
-    "META":  0.85,   # ok but dollar headwind for international revenue
-    "TSLA":  0.60,   # volatile, no clear catalyst
-    "XLE":   0.50,   # oil falling = bad for energy stocks
-    "XLU":   0.40,   # rate hike risk, avoid
+    "MU":    0.90,   # recovering but Korea oversupply concern lingers
 }
 
-# Defensive books — note: no XLU anywhere (rate hike risk)
-DEFENSIVE_CRASH   = (("XLV", 0.45), ("XLF", 0.30), ("IWM", 0.25))
-DEFENSIVE_RISKOFF = (("XLV", 0.35), ("XLF", 0.25), ("GLD", 0.20), ("IWM", 0.20))
-CAUTIOUS_DEF      = (("XLV", 0.10), ("XLF", 0.08))
+# Defensive — unchanged, still no XLU (rate risk)
+DEFENSIVE_CRASH   = (("XLV", 0.40), ("XLP", 0.35), ("GLD", 0.25))
+DEFENSIVE_RISKOFF = (("XLV", 0.30), ("XLP", 0.25), ("GLD", 0.25), ("XLF", 0.20))
+CAUTIOUS_DEF      = (("XLV", 0.08), ("XLP", 0.07))
 
 BETA_MULTIPLE: dict[str, float] = {
     "QLD": 2.0, "SSO": 2.0, "TQQQ": 3.0, "SOXL": 3.0,
     "UPRO": 3.0, "SPXL": 3.0,
 }
 
-# ── TUNING — precision-tuned for trade frequency + safety ────────────────────
-REBALANCE_DAYS  = 1       # every single day
-MAX_WEIGHT      = 0.24    # back to safe zone per Soham's feedback
-DRIFT_LIM       = 0.10    # 10% — very sensitive, creates turnover
-MAX_BETA_GROSS  = 1.30    # safer per Soham's feedback
-MIN_TRADE_PCT   = 0.005   # 0.5% minimum — lower = more trades execute
-TOP_N_RISKON    = 5       # concentrated top 5
-DEPLOY_PCT      = 0.95    # 95% deployed
-DD_STOP         = 0.06    # 6% drawdown stop (was 4%, more breathing room)
+# ── TUNING — RECOVERY MODE: safer sizing, same trade frequency ───────────────
+REBALANCE_DAYS  = 1        # keep daily — this part worked
+MAX_WEIGHT      = 0.20     # REDUCED from 0.24-0.26 — no more concentration risk
+DRIFT_LIM       = 0.10     # keep sensitive — drives trade count
+MAX_BETA_GROSS  = 1.15     # REDUCED from 1.30-1.40 — much safer
+MIN_TRADE_PCT   = 0.005    # keep low — drives trade count
+TOP_N_RISKON    = 7        # MORE diversified (was 5) — spread risk wider
+DEPLOY_PCT      = 0.90     # slightly less than 95-97% — keep some cash buffer
+DD_STOP         = 0.05     # 5% drawdown stop — tighter than v6's 6%
 
-VOL_CAUTION     = 0.28
+VOL_CAUTION     = 0.26
 CRASH_DROP_3BAR = -0.025
 CRASH_VOL_RATIO = 1.6
 
@@ -164,7 +127,7 @@ _peak_equity: float = 0.0
 _last_rebal_date: str | None = None
 
 
-# ── Utilities ─────────────────────────────────────────────────────────────────
+# ── Utilities (unchanged) ─────────────────────────────────────────────────────
 def closes(bars):
     if not bars: return []
     out = []
@@ -253,14 +216,12 @@ def regime(ms):
     sm20=mom(spy,min(20,len(spy)-2))
     if any(x is None for x in (spy50,qqq50,qv20)): return "risk_off"
 
-    # crash_bail
     qm3=mom(qqq,min(3,len(qqq)-2))
     if qm3 is not None and qm3<CRASH_DROP_3BAR: return "crash_bail"
     if len(qqq)>=24:
         v3=rvol(qqq,3); v20=rvol(qqq,20)
         if v3 and v20 and v20>0 and v3>CRASH_VOL_RATIO*v20: return "crash_bail"
 
-    # risk_off (both conditions)
     if spy[-1]<spy50 and (qm20 is not None and qm20<-0.05):
         return "risk_off"
 
@@ -269,28 +230,21 @@ def regime(ms):
     if sm20 is not None and sm20<0: return "cautious"
     return "risk_on"
 
-# ── Scoring — rotation-tuned, short+medium momentum ──────────────────────────
+# ── Scoring — broad-based, no narrow directional bet ──────────────────────────
 def score_universe(ms):
     """
-    Short-to-medium momentum with macro boost.
-    
-    Key change vs v5: mom5 weight RAISED to 0.25 (was 0.15)
-    This week short-term momentum (rotation) IS the signal.
-    IWM up this week → high mom5 → high score → we buy.
-    Tech down this week → low/negative mom5 → low score → we sell.
-    
-    This is what generates trade turnover — scores change daily
-    as rotation plays out → agent exits yesterday's losers,
-    buys today's winners → creates the 10-20+ trades we need.
+    Balanced short+medium momentum. Boost spread NARROWED to 1.15x-0.85x
+    (was 1.6x-0.5x) — this is the core fix. We still favour confirmed
+    winners (GOOGL, TSLA, XLC, XLY, XLK) but don't bet the farm on them.
+    TOP_N raised to 7 for natural diversification.
     """
     scored = []
     for t in RISK_CANDIDATES:
         v = closes(ms.get(t))
         if len(v) < 10: continue
-        m20  = mom(v, min(20, len(v)-2))
         m10  = mom(v, min(10, len(v)-2))
         m5   = mom(v, min(5,  len(v)-2))
-        m2   = mom(v, min(2,  len(v)-2))  # 2-day — very short-term signal
+        m2   = mom(v, min(2,  len(v)-2))
         n_s  = min(20, len(v)-1)
         s20  = sma(v, n_s)
         v10  = rvol(v, min(10, len(v)-2))
@@ -298,12 +252,10 @@ def score_universe(ms):
             continue
         v10  = v10 or 0.20
         gap  = v[-1]/s20 - 1.0
-        m20  = m20 or m5
         m10  = m10 or m5
         m2   = m2 or m5
-        # Short-term momentum heavily weighted — captures rotation
-        raw  = (0.30*m5 + 0.25*m10 + 0.20*m20
-                + 0.15*gap + 0.10*m2)
+        # Balanced — no single factor dominates
+        raw  = (0.30*m5 + 0.25*m10 + 0.25*gap + 0.20*m2)
         boosted = raw * SECTOR_BOOST.get(t, 1.0)
         scored.append((boosted, t, max(v10, 0.01)))
     scored.sort(reverse=True)
@@ -322,8 +274,6 @@ def inv_vol_w(cands, budget):
 # ── Target weights ─────────────────────────────────────────────────────────────
 def target_weights(ms, drawdown: float = 0.0):
     r = regime(ms)
-
-    # Drawdown stop
     if drawdown > DD_STOP and r == "risk_on":
         r = "cautious"
 
@@ -336,11 +286,11 @@ def target_weights(ms, drawdown: float = 0.0):
     pos = [(s,t,v) for s,t,v in scored if s > 0]
 
     if r == "cautious":
-        winners = pos[:4]
+        winners = pos[:5]
         if not winners:
             return cap({t:w for t,w in DEFENSIVE_RISKOFF if closes(ms.get(t))})
         cdef={t:w for t,w in CAUTIOUS_DEF if closes(ms.get(t))}
-        rb=min(0.65,1.0-sum(cdef.values()))
+        rb=min(0.60,1.0-sum(cdef.values()))
         return cap({**cdef, **inv_vol_w(winners,rb)})
 
     winners = pos[:TOP_N_RISKON]
@@ -354,7 +304,6 @@ def build_orders(targets, positions, eq, prices, cash):
     min_t=eq*MIN_TRADE_PCT
     orders=[]; sell_proc=0.0
 
-    # Sell anything not in targets OR oversized
     for t,p in positions.items():
         price=prices.get(t)
         if not price or price<=0: continue
@@ -372,8 +321,6 @@ def build_orders(targets, positions, eq, prices, cash):
                 sell_proc+=sq*price
 
     spendable=max(float(cash),0.0)+sell_proc*0.98
-
-    # Buy underweight targets
     for t,w in sorted(targets.items(),key=lambda x:-x[1]):
         price=prices.get(t)
         if not price or price<=0: continue
@@ -389,14 +336,10 @@ def build_orders(targets, positions, eq, prices, cash):
 # ── Entry point ────────────────────────────────────────────────────────────────
 def decide(market_state, portfolio_state, cash):
     """
-    Rebalances DAILY. Rotation-driven scoring means holdings change
-    as market rotation plays out → generates 8-15 trades per day.
-    
-    Week strategy Jun 29 - Jul 2:
-      Mon: GOOGL Dow inclusion buys + IWM rotation
-      Tue: Consumer Confidence + NKE earnings catalyst
-      Wed: ADP + ISM PMI — above-expect = rally
-      Thu: NFP — above-expect likely = end-of-round rally
+    RECOVERY MODE: broad-based diversification, no concentrated directional
+    bets. Daily rebalance retained for trade frequency. Tighter risk caps
+    (beta 1.15x, max weight 0.20, 7 positions) after v6's narrow rotation
+    bet underperformed when the market snapped back to mega-cap tech.
     """
     global _last_rebal_date, _peak_equity
 
